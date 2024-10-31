@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create User</title>
+  <style>
+    /* General styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    /* Container styling */
+    .form-container {
+      background-color: #ffffff;
+      padding: 20px 40px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading styling */
+    h1 {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    /* Label styling */
+    label {
+      color: #666666;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    /* Input styling */
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Button hover effect */
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h1>Create New User</h1>
+  <form th:action="@{/save}" th:object="${user}" method="post">
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" th:field="*{username}" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" th:field="*{password}" required><br>
+
+    <label for="role">Role:</label>
+    <input type="text" id="role" th:field="*{role}" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required><br>
+
+    <button type="submit">Save User</button>
+  </form>
+</div>
+</body>
+</html>
